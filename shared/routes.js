@@ -1,15 +1,23 @@
+import importedComponent from "react-imported-component";
+
 export default [
   {
     path: "/",
-    exact: true,
-    loader: () => import("../client/pages/index"),
-    modules: ["../client/pages/index"],
-    loading: () => "Загрузка"
+    comp: importedComponent(() => import("../client/pages/index/index")),
+    modules: ["../client/pages/index/index"],
+    loading: () => "Загрузка",
+    fetchInitialData: () =>
+      new Promise(resolve =>
+        resolve({
+          test: {
+            hello: "world"
+          }
+        })
+      )
   },
   {
     path: "/about",
-    exact: true,
-    loader: () => import("../client/pages/about"),
+    comp: importedComponent(() => import("../client/pages/about")),
     loading: () => "Загрузка",
     modules: ["../client/pages/about"],
     fetchInitialData: () =>

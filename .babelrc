@@ -2,8 +2,8 @@
   "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": [
     "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-syntax-dynamic-import",
-    "react-loadable/babel"
-    // "dynamic-import-node"
+    // "@babel/plugin-syntax-dynamic-import",
+    "react-imported-component/babel",
+    "babel-plugin-dynamic-import-node"
   ]
 }

@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import fs from "fs";
 import React from "react";
-import Loadable from "react-loadable";
+import { printDrainHydrateMarks } from "react-imported-component";
 import App from "../shared/components/App";
 import Routes from "../shared/components/Routes";
 import { StaticRouter, matchPath } from "react-router-dom";
@@ -23,7 +23,6 @@ app.get("*", (req, res, next) => {
   fetchInitial
     .then(data => {
       const context = {};
-
       const app = ReactDOMServer.renderToString(
         <App
           router={children => (
@@ -52,7 +51,7 @@ app.get("*", (req, res, next) => {
         );
         const htmlWithReact = htmlWithData.replace(
           '<div id="root"></div>',
-          `<div id="root">${app}</div>`
+          `<div id="root">${app}</div>${printDrainHydrateMarks()}`
         );
 
         return res.send(htmlWithReact);
@@ -61,8 +60,6 @@ app.get("*", (req, res, next) => {
     .catch(next);
 });
 
-Loadable.preloadAll().then(() => {
-  app.listen(3000, () => {
-    console.log("Running on http://localhost:3000/");
-  });
+app.listen(3000, () => {
+  console.log("Running on http://localhost:3000/");
 });

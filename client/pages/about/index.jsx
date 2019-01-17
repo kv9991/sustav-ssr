@@ -7,6 +7,7 @@ class AboutPage extends React.Component {
   render = () => {
     return (
       <div className="about-page-wrapper">
+        4444444444
         {JSON.stringify(this.props.test)}
       </div>
     );
