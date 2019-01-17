@@ -1,0 +1,38 @@
+{
+  "name": "sustav-ssr",
+  "version": "0.1.0",
+  "description": "an ssr web-site with react/express",
+  "main": "./server/index.js",
+  "scripts": {
+    "clean": "./node_modules/.bin/rimraf dist",
+    "server:build": "mkdir -p dist/server && ./node_modules/.bin/babel ./server/index.js -s --out-file ./dist/server/index.js",
+    "server:dev": "./node_modules/.bin/nodemon --watch server ./index.js --exec \"node -r dotenv -r @babel/register\"",
+    "server:run": "pm2 start ./index.js --name=sustav.pro",
+    "server:stop": "pm2 delete sustav.pro",
+    "server:restart": "pm2 restart sustav.pro",
+    "client:dev": "./node_modules/.bin/parcel watch -d ./dist/client ./client/index.html",
+    "client:build": "./node_modules/.bin/parcel build -d ./dist/client ./client/index.html",
+    "dev": "npm run clean && concurrently --kill-others \"npm run server:dev\" \"npm run client:dev\"",
+    "build": "npm run clean && npm run server:build && npm run client:build",
+    "serve:prod": "NODE_ENV=production npm run server:run",
+    "serve:dev": "NODE_ENV=development npm run server:run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.0.0-alpha.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "concurrently": "^4.1.0",
+    "dotenv": "^6.2.0",
+    "nodemon": "^1.18.9",
+    "parcel-bundler": "^1.11.0",
+    "pm2": "^3.2.8",
+    "rimraf": "^2.6.3"
+  }
+}
