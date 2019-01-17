@@ -1,5 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./pages/_app";
+import { BrowserRouter } from "react-router-dom";
+import Layout from "./core/Layout";
+import Routes from "./core/Routes";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.hydrate(
+  <BrowserRouter>
+    <Layout>
+      <Routes />
+    </Layout>
+  </BrowserRouter>,
+  document.getElementById("root")
+);
