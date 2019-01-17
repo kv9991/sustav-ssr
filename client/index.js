@@ -1,5 +1,5 @@
-const myVar = {
-  hello: "world"
-};
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./pages/_app";
 
-console.log({ ...myVar }, "13br1o");
+ReactDOM.render(<App />, document.getElementById("root"));

@@ -21,18 +21,37 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.0.0-alpha.2"
+    "express": "^5.0.0-alpha.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-loadable": "^5.5.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "autoprefixer": "^9.4.5",
     "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
     "nodemon": "^1.18.9",
     "parcel-bundler": "^1.11.0",
     "pm2": "^3.2.8",
-    "rimraf": "^2.6.3"
+    "postcss-import": "^12.0.1",
+    "postcss-modules": "^1.4.1",
+    "postcss-simple-vars": "^5.0.1",
+    "rimraf": "^2.6.3",
+    "sass": "^1.16.0"
+  },
+  "alias": {
+    "client": "./client",
+    "variables": "./client/variables",
+    "HOC": "./client/HOC"
   }
 }

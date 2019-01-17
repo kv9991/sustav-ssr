@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "autoprefixer": {
+      "flex": true
+    },
+		"postcss-simple-vars": {},
+    "postcss-import": {}
+  }
+}

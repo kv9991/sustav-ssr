@@ -1,0 +1,11 @@
+$grey: #eee;
+
+body {
+  background: $grey;
+}
+
+.my-flex {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
