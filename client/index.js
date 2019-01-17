@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import Layout from "./core/Layout";
-import Routes from "./core/Routes";
+import App from "../shared/components/App";
+import Routes from "../shared/components/Routes";
 
 ReactDOM.hydrate(
-  <BrowserRouter>
-    <Layout>
-      <Routes />
-    </Layout>
-  </BrowserRouter>,
+  <App router={children => <BrowserRouter>{children}</BrowserRouter>}>
+    <Routes />
+  </App>,
   document.getElementById("root")
 );

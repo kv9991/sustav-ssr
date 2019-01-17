@@ -14,7 +14,8 @@ class Routes extends React.Component {
             exact={props.exact}
             component={Loadable({
               loader: props.loader,
-              loading: props.loading
+              loading: props.loading,
+              modules: props.modules
             })}
           />
         ))}

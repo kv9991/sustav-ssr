@@ -3,11 +3,11 @@ import path from "path";
 import fs from "fs";
 import React from "react";
 import Loadable from "react-loadable";
-import Layout from "../client/core/Layout";
-import Routes from "../client/core/Routes";
+import App from "../shared/components/App";
+import Routes from "../shared/components/Routes";
 import { StaticRouter, matchPath } from "react-router-dom";
 import ReactDOMServer from "react-dom/server";
-import routes from "../routes";
+import routes from "../shared/routes";
 
 const app = express();
 
@@ -23,12 +23,17 @@ app.get("*", (req, res, next) => {
   fetchInitial
     .then(data => {
       const context = {};
+
       const app = ReactDOMServer.renderToString(
-        <StaticRouter location={req.url} context={context}>
-          <Layout>
-            <Routes />
-          </Layout>
-        </StaticRouter>
+        <App
+          router={children => (
+            <StaticRouter location={req.url} context={context}>
+              {children}
+            </StaticRouter>
+          )}
+        >
+          <Routes />
+        </App>
       );
 
       const indexFile = path.join(__basedir, "./dist/client/index.html");
@@ -41,7 +46,9 @@ app.get("*", (req, res, next) => {
 
         const htmlWithData = html.replace(
           '<script id="INITIAL_DATA"></script>',
-          `<script id="INITIAL_DATA">${JSON.stringify(data)}</script>`
+          `<script id="INITIAL_DATA">window.INITIAL_DATA = ${JSON.stringify(
+            data
+          )}</script>`
         );
         const htmlWithReact = htmlWithData.replace(
           '<div id="root"></div>',

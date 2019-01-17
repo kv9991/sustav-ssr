@@ -2,18 +2,22 @@ export default [
   {
     path: "/",
     exact: true,
-    loader: () => import("./client/pages/index"),
+    loader: () => import("../client/pages/index"),
+    modules: ["../client/pages/index"],
     loading: () => "Загрузка"
   },
   {
     path: "/about",
     exact: true,
-    loader: () => import("./client/pages/about"),
+    loader: () => import("../client/pages/about"),
     loading: () => "Загрузка",
+    modules: ["../client/pages/about"],
     fetchInitialData: () =>
       new Promise(resolve =>
         resolve({
-          data: "hello world"
+          test: {
+            hello: "world"
+          }
         })
       )
   }
