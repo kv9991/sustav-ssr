@@ -9,6 +9,12 @@ export default [
     path: "/about",
     exact: true,
     loader: () => import("./client/pages/about"),
-    loading: () => "Загрузка"
+    loading: () => "Загрузка",
+    fetchInitialData: () =>
+      new Promise(resolve =>
+        resolve({
+          data: "hello world"
+        })
+      )
   }
 ];
